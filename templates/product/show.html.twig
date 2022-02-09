@@ -17,6 +17,7 @@
             <h1 class="focus-product-info-name">{{ product.name }}</h1>
             <p class="focus-product-info-brand">{{ product.brand }}</p>
             <p class="focus-product-info-price">${{ (product.price / 100) | number_format(2) }}</p>
+            <hr>
             <div class="focus-product-info-detail">
                 <p id="focus-product-description" class="focus-product-detail">Product description</p>
                 <p id="show-default" class="info-detail">{{ product.description }}</p>
@@ -25,7 +26,7 @@
                 <p id="hidden" class="info-detail hidden">{{ product.composition }}</p>
             </div>
             <div class="shop-btn">
-                <a href="" class="btn btn-danger">Add to Basket</a>
+                <a href="{{ path('add_cart', {'id' : product.id }) }}" class="btn btn-danger">Add to Cart</a>
             </div>
         </div>
     </div>

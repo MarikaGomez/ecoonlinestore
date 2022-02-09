@@ -8,7 +8,8 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        <h2 class="h3 mb-3 font-weight-normal">Log in</h2>
+        <h2>Log In</h2>
+        <hr>
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Write your email" class="form-control" autocomplete="email" required autofocus>
         <label for="inputPassword">Password</label>

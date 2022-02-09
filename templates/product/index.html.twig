@@ -6,11 +6,12 @@
 
     <div class="row">
         <div class="col-md-2">
-            <h3>Filter</h3>
+            <h5>Filter</h5>
             {{ form(form) }}
         </div>
         <div class="col-md-10">
             <h2>Products</h2>
+            <hr>
             <div class="row product-container">
                 {% for product in products %}
                     <div class="product col-md-3 text-center mt-4" style="width: 18rem;">
