@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile - eco. online store {% endblock %}
+
+{% block content %}
+    <h2>Profile</h2>
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.firstname }}
+        </div>
+        <hr>
+        <div>
+            <ul>
+                <li><a href="{{ path('password') }}">Modifier mon mot de passe</a></li>
+                <li>Ajouter mes adresses</li>
+                <li>Mes commandes</li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
