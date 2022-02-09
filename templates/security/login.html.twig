@@ -16,10 +16,9 @@
         <input type="password" name="password" id="inputPassword" placeholder="Write your password" class="form-control" autocomplete="current-password" required>
 
         <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
+               value="{{ csrf_token('authenticate') }}">
         <hr>
-        <button class="btn btn-block btn-primary" type="submit">
+        <button class="btn btn-block btn-outline-danger" type="submit">
             Log In
         </button>
     </form>

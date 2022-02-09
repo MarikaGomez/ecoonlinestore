@@ -1,21 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile - eco. online store {% endblock %}
+{% block title %}My Profile - eco. online store {% endblock %}
 
 {% block content %}
-    <h2>Profile</h2>
-    <hr>
+    <h2>My Profile</h2>
 
     {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.firstname }}
-        </div>
+{#        <div class="mb-3">#}
+{#            You are logged in as {{ app.user.firstname }}#}
+{#        </div>#}
         <hr>
         <div>
             <ul>
-                <li><a href="{{ path('password') }}">Modifier mon mot de passe</a></li>
-                <li>Ajouter mes adresses</li>
-                <li>Mes commandes</li>
+                <li><a href="{{ path('password') }}">Update my password</a></li>
+                <li><a href="{{ path('address') }}">Manage my addresses</a></li>
+                <li>My Orders</li>
             </ul>
         </div>
     {% endif %}

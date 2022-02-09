@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Addresses - eco. online store {% endblock %}
+
+{% block content %}
+    <a class="float-left add-address-link" href="{{ path('add_new_address') }}">
+        <img class="add-address" src="{{ asset('assets/img/add.png') }}" alt="add address" title="Add new address">
+    </a>
+    <h2>My Addresses</h2>
+
+    <div class="text-right">
+        <a href="{{ path('profile') }}">Return</a>
+    </div>
+    <hr>
+
+    {%  if app.user.addresses | length == 0 %}
+        <div class="text-center">
+            <p class="empty-cart">&#248; address linked to your account...</p>
+            <img class="empty-cart-img mt-5 mb-5 " src="{{ asset('assets/img/no-address.png') }}" alt="no address">
+        </div>
+
+    {% else %}
+        <div class="row">
+            {% for address in app.user.addresses %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ address.name }}</h5>
+                            <p class="card-subtitle mb-2 text-muted">
+                                {{ address.address }},<br>
+                                {{ address.zipcode }} - {{ address.city }} - {{ address.country }}
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ path('delete_address', {'id' : address.id}) }}" class="btn btn-block btn-outline-dark">Delete</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{{ path('edit_address', {'id' : address.id}) }}" class="btn btn-block btn-outline-success">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
