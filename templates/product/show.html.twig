@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} - eco. online store {% endblock %}
+
+{% block content %}
+    <div class="focus-product">
+        <div class="focus-product-img">
+            <img id="focus-product-zoom-img" class="focus-product-zoom-img" src="uploads/files/{{ product.image }}" alt="{{ product.name }}">
+            <div class="focus-product-thumbnail">
+                <img class="focus-thumbnail-img active" src="uploads/files/{{ product.image }}" alt="{{ product.name }}">
+                <img class="focus-thumbnail-img" src="uploads/files/{{ product.image2 }}" alt="{{ product.name }}">
+                <img class="focus-thumbnail-img" src="uploads/files/{{ product.image3 }}" alt="{{ product.name }}">
+                <img class="focus-thumbnail-img" src="uploads/files/{{ product.image4 }}" alt="{{ product.name }}">
+            </div>
+        </div>
+        <div class="focus-product-info">
+            <h1 class="focus-product-info-name">{{ product.name }}</h1>
+            <p class="focus-product-info-brand">{{ product.brand }}</p>
+            <p class="focus-product-info-price">${{ (product.price / 100) | number_format(2) }}</p>
+            <div class="focus-product-info-detail">
+                <p id="focus-product-description" class="focus-product-detail">Product description</p>
+                <p id="show-default" class="info-detail">{{ product.description }}</p>
+                <hr>
+                <p id="focus-product-composition" class="focus-product-detail">Product composition</p>
+                <p id="hidden" class="info-detail hidden">{{ product.composition }}</p>
+            </div>
+            <div class="shop-btn">
+                <a href="" class="btn btn-danger">Add to Basket</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -33,7 +33,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md fixed-top">
         <a class="navbar-brand" href="{{ path('home') }}">eco. online store </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link" href="{{ path('products') }}">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -113,7 +113,7 @@
         </div>
     {% endif %}
 
-    <div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
+    <div class="container-xl marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
 
         {% block content %}
         {% endblock %}
@@ -121,11 +121,12 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer-custom bg-light text-dark">
+    <footer class="footer-custom">
         <p class="footer-text">eco. online store 2021© All rights reserved.</p>
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src=" {{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script src=" {{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>
