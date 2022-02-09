@@ -12,10 +12,11 @@
     --fw-reg:300;
     --fw-bold:900;
 
-    --clr-light:#FFF;
-    --clr-dark:#333232;
-    --clr-accent:#DC3545;
     --clr-black:#000;
+    --clr-light:#FFF;
+    --clr-dark:var(--clr-black);
+    --clr-accent:#DC3545;
+
 
     --fs-h1:3rem;
     --fs-h2:2.5rem;
@@ -45,7 +46,6 @@ nav a {
 }
 
 a:hover {
-    opacity: .7!important;
     text-decoration: none!important;
 }
 
@@ -55,6 +55,14 @@ nav, .navbar-item-custom, .navbar-item-custom a {
 
 nav {
     background-color: var(--clr-black);
+}
+
+.shopping-cart {
+    padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.shopping-cart-icon {
+    height: 22px;
 }
 
 /**************************************************************************/
@@ -177,6 +185,15 @@ nav {
 
 .cart-total-price {
     font-weight: var(--fw-bold);
+}
+
+.empty-cart {
+    font-size: var(--fs-h2);
+    margin: 0;
+}
+
+.empty-cart-img {
+    height: 100px;
 }
 
 /**************************************************************************/

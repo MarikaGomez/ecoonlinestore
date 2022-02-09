@@ -57,7 +57,9 @@
                     <a href="{{ path('register') }}">Sign Up</a> | <a href="{{ path('app_login') }}">Log In</a>
                 {% endif %}
             </div>
-
+            <a class="shopping-cart" href="{{ path('cart') }}">
+                <img class="shopping-cart-icon" src="{{ asset('assets/img/shopping-cart.png') }}" alt="shopping cart">
+            </a>
         </div>
     </nav>
 </header>

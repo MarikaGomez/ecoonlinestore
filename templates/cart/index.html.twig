@@ -4,54 +4,78 @@
 
 {% block content %}
     <h2>My Cart</h2>
-
-    <table class="table mt-5">
-        <thead>
-            <tr>
-                <th scope="col" colspan="2">Product</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Subtotal</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% set total = 0 %}
-            {% for products in cart %}
+    {% if cart | length > 0 %}
+        <table class="table mt-5">
+            <thead>
                 <tr>
-                    <td class="align-middle">
-                        <a href="{{ path('product', {'slug' : products.product.slug}) }}" title="{{ products.product.name }}">
-                            <img class="cart-product-img" src="uploads/files/{{ products.product.image }}" alt="{{ products.product.name }}" title="{{ products.product.name }}">
-                        </a>
-                    </td>
-                    <td class="align-middle cart-product-name">
-                        <a href="{{ path('product', {'slug' : products.product.slug}) }}" title="{{ products.product.name }}">
-                            {{ products.product.name }}
-                        </a>
-                    </td>
-                    <td class="align-middle">{{ products.quantity }}</td>
-                    <td class="align-middle">${{ (products.product.price / 100) | number_format(2) }}</td>
-                    <td class="align-middle">${{ ((products.product.price * products.quantity )/ 100) | number_format(2) }}</td>
+                    <th scope="col" class="text-center" colspan="2">Product</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Subtotal</th>
+                    <th scope="col"></th>
                 </tr>
-                {% set total = total + products.product.price * products.quantity %}
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr class="cart-total-price">
-                <td colspan="4">Total</td>
-                <td>${{ (total / 100) | number_format(2) }}</td>
-            </tr>
-        </tfoot>
-    </table>
-    <div class="row mt-5 mb-5">
-        <div class="col-md-6">
-            <a href="{{ path('delete_cart') }}" class="btn btn-block btn-dark">Empty Cart</a>
+            </thead>
+    
+            <tbody>
+                {% set total = 0 %}
+                {% for products in cart %}
+                    <tr>
+                        <td class="align-middle">
+                            <a href="{{ path('product', {'slug' : products.product.slug}) }}" title="{{ products.product.name }}">
+                                <img class="cart-product-img" src="uploads/files/{{ products.product.image }}" alt="{{ products.product.name }}" title="{{ products.product.name }}">
+                            </a>
+                        </td>
+                        <td class="align-middle cart-product-name">
+                            <a href="{{ path('product', {'slug' : products.product.slug}) }}" title="{{ products.product.name }}">
+                                {{ products.product.name }}
+                            </a>
+                        </td>
+                        <td class="align-middle text-center">{{ products.quantity }}</td>
+                        <td class="align-middle text-center">
+                            <a href="{{ path('add_cart', {'id' : products.product.id}) }}">
+                                <img src="{{ asset('assets/img/add.png') }}" alt="add item" title="Add an item">
+                            </a>
+                        </td>
+                        <td class="align-middle text-center">
+                            <a href="{{ path('delete_item', {'id': products.product.id}) }}">
+                                <img src="{{ asset('assets/img/minus.png') }}" alt="add item" title="Add an item">
+                            </a>
+                        </td>
+                        <td class="align-middle text-center">${{ (products.product.price / 100) | number_format(2) }}</td>
+                        <td class="align-middle text-center">${{ ((products.product.price * products.quantity )/ 100) | number_format(2) }}</td>
+                        <td class="align-middle text-center cart-delete-product">
+                            <a href="{{ path('delete_product', {'id' : products.product.id}) }}">
+                                <img src="{{ asset('assets/img/trash.png') }}" alt="delete product" title="Delete this product">
+                            </a>
+                        </td>
+                    </tr>
+                    {% set total = total + products.product.price * products.quantity %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class="cart-total-price">
+                    <td class="align-middle" colspan="6">Total</td>
+                    <td class="align-middle text-center" colspan="1">${{ (total / 100) | number_format(2) }}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="row mt-5 mb-5">
+            <div class="col-md-6">
+                <a href="{{ path('delete_cart') }}" class="btn btn-block btn-dark">Empty Cart</a>
+            </div>
+            <div class="col-md-6">
+                <a href="" class="btn btn-block btn-danger">Checkout & Shipping</a>
+            </div>
         </div>
-        <div class="col-md-6">
-            <a href="" class="btn btn-block btn-danger">Checkout & Shipping</a>
+    {% else %}
+        <hr>
+        <div class="text-center">
+            <p class="empty-cart">Your cart is empty...</p>
+            <img class="empty-cart-img mb-5 " src="{{ asset('assets/img/empty-bag.png') }}" alt="empty bag">
+            <a href="{{ path('products') }}" class="btn btn-block btn-outline-danger">Shop now !</a>
         </div>
-
-
-
-    </div>
-{% endblock %}
+    {% endif %}
+    {% endblock %}
