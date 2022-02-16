@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Failed payment attempt...  - eco. online store {% endblock %}
+
+{% block content %}
+    <h2>Hi {{ order.user.firstname }},</h2>
+    <hr>
+    <p>
+        Unfortunately, the payment for your order has failed. <br>
+        Your order <strong>#{{ order.reference }}</strong> isn't confirmed yet but don't panic, it happens ! <br>
+        Please update your payment information
+    </p>
+    <a href="{{ path('order') }}" class="btn btn-block btn-outline-danger">Try again</a>
+{% endblock %}

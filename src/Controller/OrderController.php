@@ -66,6 +66,10 @@ class OrderController extends AbstractController
 
             // Save order in database
             $order = new Order();
+
+            $reference = $date -> format('dmY').'-'.uniqid();
+            $order -> setReference($reference);
+
             $order -> setUser($this-> getUser());
             $order -> setCreatedAt($date);
             $order -> setCarrierName($carriers -> getName());
@@ -75,7 +79,6 @@ class OrderController extends AbstractController
 
             $this -> entityManager -> persist($order);
 
-
             // Save order details in database
             foreach ($cart -> getProductData() as $product) {
                 //dd($product);
@@ -83,19 +86,24 @@ class OrderController extends AbstractController
                 $order_details -> setMyOrder($order);
                 $order_details -> setProduct($product['product'] -> getName());
                 $order_details -> setQuantity($product['quantity']);
-                $order_details -> setPrice(($product['product'] -> getPrice() / 100) | number_format(2));
-                $order_details -> setTotal(($product['product'] -> getPrice() * $product['quantity'] / 100) | number_format(2));
+                $order_details -> setPrice($product['product'] -> getPrice());
+                $order_details -> setTotal($product['product'] -> getPrice() * $product['quantity']);
 
                 $this -> entityManager -> persist($order_details);
             }
 
+            //dd($products_for_stripe);
+
             // Flush all in database
             $this -> entityManager -> flush();
+
+            //dd($checkout_session);
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart -> getProductData(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
+                'reference' => $order -> getReference(),
             ]);
         }
 
