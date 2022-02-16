@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order - eco. online store {% endblock %}
+
+{% block content %}
+    <h2>My Order</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+                {{ form_start(form, {'action': path('order_summary')}) }}
+                    {{ form_label(form.addresses, 'Select your delivery address') }}
+                    <a href="{{ path('add_new_address') }}">Add new address</a>
+                {{ form_end(form) }}
+            {% endset %}
+
+            {{ formHtml | replace({'[br]': '<br>'}) | raw }}
+        </div>
+        <div class="col-md-6">
+            <h5 class="order-summary-title">Order Summary</h5>
+            <hr>
+
+            {% set total = 0 %}
+            {% for key,products in cart %}
+                <div class="row {% if key > 0 %} mt-3 {% endif %}">
+                    <div class="col-md-3">
+                        <img class="cart-product-img" src="/uploads/files/{{ products.product.image }}" alt="{{ products.product.name }}" title="{{ products.product.name }}">
+                    </div>
+                    <div class="col-md-7 my-auto">
+                        <p class="order-product-name">{{ products.product.name }}</p>
+                        <p>Quantity = {{ products.quantity }}</p>
+                    </div>
+                    <div class="col-md-2 my-auto">
+                        ${{ ((products.product.price * products.quantity )/ 100) | number_format(2) }}
+                    </div>
+                </div>
+                {% set total = total + products.product.price * products.quantity %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

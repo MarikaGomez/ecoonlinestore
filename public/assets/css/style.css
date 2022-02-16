@@ -209,6 +209,30 @@ nav {
 }
 
 /**************************************************************************/
+/**************                    ORDER                     **************/
+/**************************************************************************/
+
+.col-form-label, .order-summary-title {
+    font-weight: var(--fw-bold);
+    font-size: 1.25rem !important;
+    text-transform: capitalize;
+}
+
+.form-check {
+    margin: 2% 0;
+}
+
+.order-product-name {
+    font-weight: var(--fw-bold);
+}
+
+.order-payment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**************************************************************************/
 /**************                    FOOTER                    **************/
 /**************************************************************************/
 
