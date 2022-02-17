@@ -14,6 +14,7 @@
             <thead>
             <tr>
                 <th scope="col">Reference</th>
+                <th scope="col" class="text-center">Status</th>
                 <th scope="col" class="text-center">Placed On</th>
                 <th scope="col" class="text-center">Item(s)</th>
                 <th scope="col" class="text-center">Total</th>
@@ -24,6 +25,15 @@
                 {% for order in orders %}
                     <tr>
                         <td> <span class="badge badge-secondary">{{ order.reference }}</span></td>
+                        <td class="text-center">
+                            {% if order.state == 1 %}
+                                Confirmed
+                            {% elseif order.state == 2 %}
+                                In Progress...
+                            {% elseif order.state == 3 %}
+                                Shipped!
+                            {% endif %}
+                        </td>
                         <td class="text-center">{{ order.createdAt | date('d/m/Y') }}</td>
                         <td class="text-center">
                             {% set occurence = 0 %}

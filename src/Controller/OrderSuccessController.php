@@ -28,20 +28,20 @@ class OrderSuccessController extends AbstractController
             return $this -> redirectToRoute('home');
         }
 
-        if (!$order -> getIsPaid()) {
+        if ($order -> getState() === 0) {
             // empty cart
             $cart -> remove();
 
             // change order status | boolean
-            $order -> setIsPaid(1);
+            $order -> setState(1);
             $this -> entityManager -> flush();
 
             // send mail to confirm order
             $mail = new Mail();
             $content =
-                'Hi'.$order -> getUser() -> getFirstname().', <br>
+                'Hi '.$order -> getUser() -> getFirstname().', <br>
 Thanks for your purchase! <br><br>
-Your order <strong># '.$order -> getReference() .'</strong> has been confirmed. <br>
+Your order <strong>#'.$order -> getReference() .'</strong> has been confirmed. <br>
 We hope that it’s exactly what you were looking for. Let us know how you like it. <br><br>
 Thank you for ordering from eco. online store&copy;.';
             $mail -> send(

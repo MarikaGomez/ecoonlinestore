@@ -17,6 +17,18 @@
         <div><strong>Reference : </strong> #{{ order.reference }}</div>
     </div>
     <div class="">
+        <div>
+            <strong>Status : </strong>
+            {% if order.state == 1 %}
+                Confirmed
+            {% elseif order.state == 2 %}
+                In Progress...
+            {% elseif order.state == 3 %}
+                Shipped!
+            {% endif %}
+        </div>
+    </div>
+    <div class="">
         <div><strong>Delivery : </strong> {{ order.carrierName }}</div>
     </div>
 
