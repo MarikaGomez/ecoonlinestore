@@ -2,8 +2,15 @@
 
 {% block content %}
     <h2>New Account</h2>
-    <hr>
+    {% if success %}
+        <div class="alert alert-info">{{ success }}</div>
+    {% endif %}
 
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <hr>
     {{ form(form) }}
 
 {% endblock %}

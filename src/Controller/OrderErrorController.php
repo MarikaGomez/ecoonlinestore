@@ -27,10 +27,6 @@ class OrderErrorController extends AbstractController
             return $this -> redirectToRoute('home');
         }
 
-        // send mail for cancelled operation
-
-
-
         return $this->render('order_error/index.html.twig', [
             'order' => $order,
         ]);

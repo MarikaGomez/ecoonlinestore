@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\CustomClass\Cart;
+use App\CustomClass\Mail;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,9 +37,20 @@ class OrderSuccessController extends AbstractController
             $this -> entityManager -> flush();
 
             // send mail to confirm order
-
+            $mail = new Mail();
+            $content =
+                'Hi'.$order -> getUser() -> getFirstname().', <br>
+Thanks for your purchase! <br><br>
+Your order <strong># '.$order -> getReference() .'</strong> has been confirmed. <br>
+We hope that it’s exactly what you were looking for. Let us know how you like it. <br><br>
+Thank you for ordering from eco. online store&copy;.';
+            $mail -> send(
+                $order -> getUser() -> getEmail(),
+                $order -> getUser() -> getFullName(),
+                'Order confirmed.',
+                $content,
+            );
         }
-
 
         return $this->render('order_success/index.html.twig',[
             'order' => $order,
