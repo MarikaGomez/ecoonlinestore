@@ -40,7 +40,7 @@
                         </td>
                         <td class="align-middle text-center">
                             <a href="{{ path('delete_item', {'id': products.product.id}) }}">
-                                <img src="{{ asset('assets/img/minus.png') }}" alt="add item" title="Add an item">
+                                <img src="{{ asset('assets/img/minus.png') }}" alt="remove an item" title="Remove an item">
                             </a>
                         </td>
                         <td class="align-middle text-center">${{ (products.product.price / 100) | number_format(2) }}</td>
