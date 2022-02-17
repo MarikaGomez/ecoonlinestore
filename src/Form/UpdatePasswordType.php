@@ -55,9 +55,9 @@ class UpdatePasswordType extends AbstractType
                 ],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Update',
+                'label' => 'Update Password',
                 'attr' => [
-                    'class' => 'btn-block btn-outline-dark'
+                    'class' => 'btn-block btn-outline-danger mt-3'
                 ]
             ])
         ;

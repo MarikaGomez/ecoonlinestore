@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forgotten Password - eco. online store {% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        <h2>Forgotten Password</h2>
+        <hr>
+        <label for="inputEmail">Email</label>
+        <input type="email" name="email" id="inputEmail" placeholder="Write your email" class="form-control" autocomplete="email" required autofocus>
+        {% if success %}
+            <div class="alert alert-info mt-3">{{ success }}</div>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+        <button class="btn btn-block btn-outline-danger mt-4" type="submit">Reset Password</button>
+    </form>
+{% endblock %}

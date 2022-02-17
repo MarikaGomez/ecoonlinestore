@@ -7,6 +7,9 @@
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
 
         <h2>Log In</h2>
         <hr>
@@ -21,6 +24,6 @@
             Log In
         </button>
         <hr>
-        <p class="text-center"><a href="">Forgot Password ?</a></p>
+        <p class="text-center"><a href="{{ path('reset_password') }}">Forgot Password ?</a></p>
     </form>
 {% endblock %}

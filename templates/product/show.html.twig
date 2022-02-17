@@ -30,4 +30,13 @@
             </div>
         </div>
     </div>
+    <h5 class="mt-5">You May Also Like</h5>
+    <hr>
+    <div class="row">
+        {% for product in products %}
+            <div class="product col-md-4 text-center mt-4" style="width: 18rem;">
+                {% include 'product/single_product.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

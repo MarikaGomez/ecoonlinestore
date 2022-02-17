@@ -44,6 +44,9 @@ class ProductController extends AbstractController
     public function show($slug): Response
     {
         $product = $this -> entityManager -> getRepository(Product::class) -> findOneBy(['slug' => $slug]);
+        $similar_products = $this -> entityManager -> getRepository(Product::class) -> findBy([
+            'category' => $product->getCategory()],null, 4);
+        unset($similar_products[array_search($product, $similar_products)]);
 
         if (!$product) {
             return $this -> redirectToRoute('products');
@@ -51,6 +54,7 @@ class ProductController extends AbstractController
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'products' => $similar_products,
         ]);
     }
 }
