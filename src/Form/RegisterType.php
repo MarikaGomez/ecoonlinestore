@@ -21,19 +21,19 @@ class RegisterType extends AbstractType
             ->add('firstname', TextType::class, [
                 'constraints' => new Length([],2),
                 'attr' => [
-                    'placeholder' => 'Write your firstname',
+                    'placeholder' => 'Firstname',
                 ]
             ])
             ->add('lastname', TextType::class, [
                 'constraints' => new Length([],2),
                 'attr' => [
-                    'placeholder' => 'Write your lastname',
+                    'placeholder' => 'Lastname',
                 ]
             ])
             ->add('email', EmailType::class, [
-                'constraints' => new Length([],2,50),
+                'constraints' => new Length([],2,60),
                 'attr' => [
-                    'placeholder' => 'Write your email',
+                    'placeholder' => 'Email',
                 ]
             ])
             ->add('password', RepeatedType::class, [
@@ -45,13 +45,13 @@ class RegisterType extends AbstractType
                 'first_options' => [
                     'label' => 'Password',
                     'attr' => [
-                        'placeholder' => 'Write your password',
+                        'placeholder' => 'Password',
                     ]
                 ],
                 'second_options' => [
                     'label' => 'Confirm Password',
                     'attr' => [
-                        'placeholder' => 'Confirm your password',
+                        'placeholder' => 'Confirm Password',
                     ]
                 ],
             ])

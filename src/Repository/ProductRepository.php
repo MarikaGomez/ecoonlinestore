@@ -31,17 +31,19 @@ class ProductRepository extends ServiceEntityRepository
             -> select('c', 'p') // category && product
             -> join('p.category', 'c');
 
-        if (!empty($search -> categories)) {
+        if (!empty($search -> categories) || !empty($search -> string)) {
             $query = $query
                 -> andWhere('c.id IN (:categories)')
-                -> setParameter('categories', $search -> categories);
+                -> andWhere('p.name LIKE :string OR p.brand LIKE :string')
+                -> setParameter('categories', $search -> categories)
+                -> setParameter('string', "%{$search -> string}%");
         }
 
-        if (!empty($search -> string)) {
-            $query = $query
-                -> andWhere('p.name LIKE :string OR p.brand LIKE :string')
-                -> setParameter('string', `%{$search -> string}%`);
-        }
+//        if (!empty($search -> string)) {
+//            $query = $query
+//                -> andWhere('p.name LIKE :string OR p.brand LIKE :string')
+//                -> setParameter('string', "%{$search -> string}%");
+//        }
 
         return $query -> getQuery() -> getResult();
     }

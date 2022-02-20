@@ -91,16 +91,6 @@ class Product
         return $this;
     }
 
-    public function setImgFile(File $img = null)
-    {
-        $this->imgFile = $img;
-    }
-
-    public function getImgFile()
-    {
-        return $this->imgFile;
-    }
-
     public function getBrand(): ?string
     {
         return $this->brand;

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Us - eco. online store{% endblock %}
+
+{% block content %}
+    <h2>Let's talk about everything.</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Consectetur distinctio provident quis sed sint.
+    </p>
+    {% if success %}
+        <div class="alert alert-info">{{ success }}</div>
+        <hr>
+    {% endif %}
+    <hr>
+
+    <div class="row mt-5">
+        <div class="col-md-8">
+            {{ form(form) }}
+        </div>
+
+        <div class="col-md-4">
+            <img class="contact-img" src="{{ asset('assets/img/contact.jpg') }}" alt="contact us" title="Contact Us">
+        </div>
+    </div>
+{% endblock %}

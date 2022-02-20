@@ -62,13 +62,13 @@ class AddressType extends AbstractType
             ->add('phone', TelType::class, [
                 'label' => 'Phone Number',
                 'attr' => [
-                    'placeholder' => 'XX-XX-XX-XX-XX',
+                    'placeholder' => '+(33)7 01 23 45 67',
                 ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
                 'attr' => [
-                    'class' => 'btn-block btn-outline-dark'
+                    'class' => 'btn-block btn-outline-danger'
                 ]
             ])
         ;

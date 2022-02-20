@@ -10,12 +10,26 @@
 {#            You are logged in as {{ app.user.firstname }}#}
 {#        </div>#}
         <hr>
-        <div>
-            <ul>
-                <li><a href="{{ path('password') }}">Update my password</a></li>
-                <li><a href="{{ path('address') }}">Manage my addresses</a></li>
-                <li><a href="{{ path('my_orders') }}">My Orders</a></li>
-            </ul>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-item text-center">
+                    <img class="mb-2" src="{{ asset('assets/img/password.png') }}" alt="password"><br>
+                    <a href="{{ path('password') }}">My Password</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-item text-center">
+                    <img class="mb-2" src="{{ asset('assets/img/address.png') }}" alt="address"><br>
+                    <a href="{{ path('address') }}">My Addresses</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-item text-center">
+                    <img class="mb-2" src="{{ asset('assets/img/orders.png') }}" alt="orders"><br>
+                    <a href="{{ path('my_orders') }}">My Orders</a>
+                </div>
+            </div>
         </div>
     {% endif %}
 {% endblock %}

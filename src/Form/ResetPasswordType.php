@@ -24,13 +24,13 @@ class ResetPasswordType extends AbstractType
                 'first_options' => [
                     'label' => 'New Password',
                     'attr' => [
-                        'placeholder' => 'Choose a new password',
+                        'placeholder' => 'New Password',
                     ]
                 ],
                 'second_options' => [
                     'label' => 'Confirm New Password',
                     'attr' => [
-                        'placeholder' => 'Confirm your new password',
+                        'placeholder' => 'Confirm New Password',
                     ]
                 ],
             ])

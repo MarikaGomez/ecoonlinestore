@@ -3,13 +3,14 @@
 {% block title %}Log In - eco. online store {% endblock %}
 
 {% block content %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
-        {% for message in app.flashes('notice') %}
-            <div class="alert alert-success">{{ message }}</div>
-        {% endfor %}
+
 
         <h2>Log In</h2>
         <hr>

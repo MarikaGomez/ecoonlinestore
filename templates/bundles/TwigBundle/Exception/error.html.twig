@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404 - Page not found - eco. online store{% endblock %}
+
+{% block content %}
+    <div class="not-found-container">
+        <div class="not-found">
+            <div class="not-found-404">
+                <h1 class="not-found-title">Oops!</h1>
+                <p class="not-found-text">404 - Page not found</p>
+            </div>
+            <a href="{{ path('home') }}" class="btn btn-outline-danger">Return Home</a>
+        </div>
+    </div>
+{% endblock %}

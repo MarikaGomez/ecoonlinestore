@@ -11,7 +11,7 @@
             {% set formHtml %}
                 {{ form_start(form, {'action': path('order_summary')}) }}
                     {{ form_label(form.addresses, 'Select your delivery address') }}
-                    <a href="{{ path('add_new_address') }}">Add new address</a>
+                    <a href="{{ path('add_new_address') }}" class="btn btn-outline-danger btn-block">Add new address</a>
                 {{ form_end(form) }}
             {% endset %}
 
