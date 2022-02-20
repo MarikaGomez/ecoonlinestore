@@ -5,7 +5,7 @@
  Pour la réalisation de ce projet, j'ai travaillé seule.
 
  Il s'agit d'une application web dont le principe s'inspire des sites de e-commerce de produits cosmétiques. 
- Ce projet est une évolution du projet eco qui me permet de monter en compétences sur le framework Symfony. 
+ Ce projet est une évolution du projet eco que j'avais réalisé en débutant avec PHP. Il me permet de monter en compétences sur le framework Symfony. 
  
  ## Technologies
  
