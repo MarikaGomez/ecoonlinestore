@@ -67,7 +67,7 @@
 
 {% block script %}
     <script type="text/javascript">
-        const stripe = Stripe['pk_test_51K332aKn0xm14My0v9hYSSI51mJnCmzekE45CK3PdoUoX1pbDN3Cq6mRmVCe8h6ym5OvQGBRonGoThRPTwPfaWWt00Zz1OefIT'];
+        const stripe = Stripe['YourApiKey'];
         const checkoutButton = document.getElementById("checkout-button");
         checkoutButton.addEventListener("click", function () {
             fetch("/order/create-session/{{ reference }}", {
